@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Texturina','Roboto', sans-serif;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }  
+  input {
+    padding: 4px;
+    margin: 4px;
+    border-radius: 4px;
+    border: solid black 1px;
+  }
+  select {
+    margin: 4px;
+    border-radius: 4px;
+  }
+  button {
+    background-color: blanchedalmond;
+    border: solid black 2px;
+    border-radius: 4px;
+  }
+  button:hover {
+    cursor: pointer;
+  }
+/* HEADER */
+  header {
+      overflow: hidden;
+      position: fixed;
+      top: 0;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      background-color: bisque;
+  }
+  .banner-a, .banner-b {
+      display: flex;
+      margin: 0;
+      padding: 8px;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+  }
+    h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+    .plus {
+      height: 45px;
+      width: 45px;
+    }
+    p {
+      font-weight: 400;
+      font-size: 18px;
+    }
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: left;
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      justify-content: right;
+    }
+
+/* BODY */
+  .bookmark-list {
+    margin-top: 160px;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    }
+  .bookmark {
+    background-color: blanchedalmond;
+    border: solid black 2px;
+    border-radius: 4px;
+    padding: 16px;
+    width: 100%;
+    list-style-type: none;    
+  }
+  .condensed {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .delete-bookmark-btn, .expand-bookmark-toggle {
+    height: 38px;
+    width: 38px;
+  }
+  .delete-bookmark-btn {
+    background-color: rgb(253, 182, 182);
+  }
+  h2, h2 input {
+    margin: 0;
+    border: none;
+  }
+   .stars {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+
+  }
+  .stars li button {
+    height: 38px;
+    width: 38px;
+    border: none;
+  }
+  

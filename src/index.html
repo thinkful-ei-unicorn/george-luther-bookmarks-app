@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Wormflare</title>
+  <meta name="Description" content="A web application for generating and manipulating rhythmic patterns. Created by George Luther in 2020">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Texturina" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/6cb83674ce.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- HEADER -->
+  <header>
+    <div class="banner-a">    
+      <h1>WORMFLARE</h1>
+      <button title="add a new bookmark" id="js-add-bookmark" class="plus icon">
+        <i class="fas fa-plus fa-2x"></i>
+      </button>
+    </div>
+    <div class="banner-b">
+      <div class="left">
+        <input id="minStars" placeholder="min rating" title="set minimum rating to display" size="8">
+        <input id="maxStars" placeholder="max rating" title="set minimum rating to display" size="8">
+      </div>
+      <div class="right">
+        <input id="filter" placeholder="search by name" title="only show links with a name including..." size="21">
+        <select id="sortBy">
+            <option value="byCreated">sort by recently created</option>
+            <option value="byEdited">sort by last edited</option>
+            <option value="byHighRating">sort by highest rating</option>
+            <option value="byLowRating">sort by lowest rating</option>
+            <option value="byName">sort by name</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <ul class="bookmark-list js-bookmark-list">
+    <li class="bookmark js-bookmark" data-item-id="${item.id}">
+      <div class="condensed">
+        <!-- delete -->
+        <button class="delete-bookmark-btn js-delete-bookmark-btn">
+          <i class="fas fa-times"></i>
+        </button>
+        <!-- bookmark title -->
+        <h2><input title="bookmark name (required)" type="text" 
+          name="bookmark-entry" class="js-bookmark-entry" 
+          placeholder="e.g., my facebook feed" required></h2>
+        <!-- rating -->
+        <ul class="stars">
+          <li><button class="star" value='1'><i class="far fa-star"></i></button></li>
+          <li><button class="star" value='2'><i class="far fa-star"></i></button></li>
+          <li><button class="star" value='3'><i class="far fa-star"></i></button></li>
+          <li><button class="star" value='4'><i class="far fa-star"></i></button></li>
+          <li><button class="star" value='5'><i class="far fa-star"></i></button></li>
+        </ul>
+        <!-- expand -->
+        <button title="show/hide details" class="expand-bookmark-toggle js-expand-bookmark-tggle">
+          <i class="fas fa-caret-right"></i>
+        </button>
+      </div>
+      <div class="expanded">
+        <div class="url">
+          <!-- url link -->
+          <input title="bookmark url (required)" type="text" 
+            name="bookmark-url" class="js-bookmark-url" 
+            placeholder="e.g., www.facebook.com" size="30" required>
+          <!-- visit -->
+          <a class="visit-bookmark-btn js-visit-bookmark-btn" href="${item.url}">
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+        <!-- description -->
+        <textarea title="bookmark description (not required)" class="js-bookmark-description" rows="4" cols="50" placeholder="Add a description here. (optional)"></textarea>
+      </div>
+    </li>
+  </ul>
+
+</body>
+</html>

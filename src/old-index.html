@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Wormflare</title>
+  <meta name="Description" content="A web application for generating and manipulating rhythmic patterns. Created by George Luther in 2020">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Texturina" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/6cb83674ce.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- App title, app description, add new bookmark button w/ tooltip. -->
+  <header>
+    <div class="banner-a">    
+      <h1>WORMFLARE</h1>
+      <button title="add a new bookmark" id="js-add-bookmark" class="plus icon">
+        <i class="fas fa-plus fa-2x"></i>
+      </button>
+    </div>
+    <p class="banner-b">Keep track of your favorite and most loathed websites!</p>
+  </header>
+
+  <ul class="bookmark-list js-bookmark-list">
+
+    <li class="js-item-element bookmark" data-item-id="${item.id}">
+      <button title="show/hide details" class="expand-item-toggle icon js-expand-item-toggle">
+        <i class="fas fa-caret-right"></i>
+      </button>
+      <h2><input title="bookmark name (required)" type="text" name="shopping-list-entry" class="js-shopping-list-entry" placeholder="e.g., facebook" required></h2>
+      <ul class="${item.id} stars">
+        <li><button class="star 1"><i class="far fa-star"></i></button></li>
+        <li><i class="far fa-star"></i></li>
+        <li><i class="far fa-star"></i></li>
+        <li><i class="far fa-star"></i></li>
+        <li><i class="far fa-star"></i></li>
+      </ul>
+      <div class="bookmark-item-controls">
+        <button class="visit-btn js-visit-btn">
+          <span class="button-label">visit</span>
+        </button>
+        <button class="shopping-item-delete js-item-delete">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </li>
+  </ul>
+</body>
+</html>
