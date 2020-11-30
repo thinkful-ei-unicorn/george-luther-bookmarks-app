@@ -3,6 +3,44 @@ import $ from 'jquery'
 import store from './store'
 import api from './api'
 
+//to stay with the instant/live editing vibe... add new bookmark submission attempt on other handlers? 
+//this way new bookmarks automatically and immediately become part of the group.
+
+const renderNewBookmark = function () {
+  $('.js-new-bookmark-div').html(`
+              <form class="js-new-bookmark-form new-bookmark-form">
+                <div class="condensed">
+                  <!-- delete -->
+                  <button class="delete-bookmark-btn js-delete-bookmark-btn" type="button">
+                    <i class="fas fa-times"></i>
+                  </button>
+                  <!-- bookmark title -->
+                  <h2><input title="bookmark name (required)" type="text" 
+                    name="bookmark-entry" class="js-new-title" 
+                    placeholder="e.g., facebook" required></h2>
+                  <!-- rating -->
+                  <ul class="stars">
+                    <li value='1'><button type="button" class="star 1"><i class="far fa-star"></i></button></li>
+                    <li value='2'><button type="button" class="star 2"><i class="far fa-star"></i></button></li>
+                    <li value='3'><button type="button" class="star 3"><i class="far fa-star"></i></button></li>
+                    <li value='4'><button type="button" class="star 4"><i class="far fa-star"></i></button></li>
+                    <li value='5'><button type="button" class="star 5"><i class="far fa-star"></i></button></li>
+                  </ul>
+                </div>
+
+                <div class="expanded">
+                  <div class="url">
+                    <!-- url link -->
+                    <input title="bookmark url (required)" type="text" 
+                      name="bookmark-url" class="bookmark-url js-new-url" 
+                      placeholder="e.g., www.facebook.com" required>
+                  </div>
+                  <!-- description -->
+                  <textarea title="bookmark description (not required)" class="js-new-description" rows="4" cols="50" placeholder="Add a description here. (optional)"></textarea>
+                </div>
+              </form>`)
+}
+
 const generateRatingString = function (link) {
   let ratingHTML = ''
   for (let i=0; i < 5; i++) {
@@ -257,40 +295,12 @@ const handleAddBookmarkBtn = function () {
         $('.js-new-bookmark-form').trigger('submit')
         //if there is a blank bookmark, check that the form is fulfilled
         // if not, send an error, if it is save it and change how it's rendered.
+
+        //when every action outside of the new bookmark automatically submits a bookmark add this:
+        //store.addingBookmark = true
       } else {
         store.addingBookmark = true
-        $('.js-new-bookmark-div').html(`
-              <form class="js-new-bookmark-form new-bookmark-form">
-                <div class="condensed">
-                  <!-- delete -->
-                  <button class="delete-bookmark-btn js-delete-bookmark-btn" type="button">
-                    <i class="fas fa-times"></i>
-                  </button>
-                  <!-- bookmark title -->
-                  <h2><input title="bookmark name (required)" type="text" 
-                    name="bookmark-entry" class="js-new-title" 
-                    placeholder="e.g., facebook" required></h2>
-                  <!-- rating -->
-                  <ul class="stars">
-                    <li value='1'><button type="button" class="star 1"><i class="far fa-star"></i></button></li>
-                    <li value='2'><button type="button" class="star 2"><i class="far fa-star"></i></button></li>
-                    <li value='3'><button type="button" class="star 3"><i class="far fa-star"></i></button></li>
-                    <li value='4'><button type="button" class="star 4"><i class="far fa-star"></i></button></li>
-                    <li value='5'><button type="button" class="star 5"><i class="far fa-star"></i></button></li>
-                  </ul>
-                </div>
-
-                <div class="expanded">
-                  <div class="url">
-                    <!-- url link -->
-                    <input title="bookmark url (required)" type="text" 
-                      name="bookmark-url" class="bookmark-url js-new-url" 
-                      placeholder="e.g., www.facebook.com" required>
-                  </div>
-                  <!-- description -->
-                  <textarea title="bookmark description (not required)" class="js-new-description" rows="4" cols="50" placeholder="Add a description here. (optional)"></textarea>
-                </div>
-              </form>`)
+        renderNewBookmark()
       }
     })
 }
