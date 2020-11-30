@@ -1,4 +1,4 @@
-# WORMFLARE - Bookmark your loved and loathed websites
+# WORMFLARE - bookmark and organize your loved and loathed websites
 
 [Click here to view the live app](https://thinkful-ei-unicorn.github.io/george-luther-bookmarks-app/)
 
