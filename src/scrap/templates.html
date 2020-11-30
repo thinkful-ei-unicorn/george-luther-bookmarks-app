@@ -1,0 +1,42 @@
+<li class="new-bookmark js-new-bookmark">
+  <form id="js-new-bookmark-form">
+      <div class="condensed">
+        <!-- delete -->
+        <button class="delete-bookmark-btn js-delete-bookmark-btn">
+          <i class="fas fa-times"></i>
+        </button>
+        <!-- bookmark title -->
+        <h2><input title="bookmark name (required)" type="text" 
+          name="bookmark-entry" class="js-new-title" 
+          placeholder="e.g., facebook" required></h2>
+        <!-- rating -->
+        <ul class="stars">
+          <li><button class="star" value='1'><i class="far fa-star"></i></button></li>
+          <li><button class="star" value='2'><i class="far fa-star"></i></button></li>
+          <li><button class="star" value='3'><i class="far fa-star"></i></button></li>
+          <li><button class="star" value='4'><i class="far fa-star"></i></button></li>
+          <li><button class="star" value='5'><i class="far fa-star"></i></button></li>
+        </ul>
+        <!-- expand (not a real button) -->
+        <div title="show/hide details" class="expand-bookmark-toggle">
+          <i class="fas fa-caret-right fa-2x"></i>
+        </div>
+      </div>
+
+      <div class="expanded">
+        <div class="url">
+          <!-- url link -->
+          <input title="bookmark url (required)" type="text" 
+            name="bookmark-url" class="bookmark-url js-new-url" 
+            placeholder="e.g., www.facebook.com" required>
+          <!-- visit -->
+          <div class="visit-bookmark-btn js-visit-bookmark-btn">
+            <i class="fas fa-external-link-alt"></i>
+          </div>
+        </div>
+        <!-- description -->
+        <textarea title="bookmark description (not required)" class="js-new-description" rows="4" cols="50" placeholder="Add a description here. (optional)"></textarea>
+      </div>
+  </form>
+</li>
+

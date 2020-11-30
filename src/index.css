@@ -6,34 +6,49 @@
     width: 100%;
     padding: 0;
     margin: 0;
+    background-image: url("images/noisy-texture.png"), url("images/wheat.png");
+    background-attachment: fixed;
   }  
   input {
     padding: 4px;
     margin: 4px;
-    border-radius: 4px;
-    border: solid black 1px;
+    border: none;
+    border-bottom: solid rgb(151, 135, 110) 1px;
+  }
+  textarea, input, select {
+    background-color: rgba(255, 235, 205, 0);
+
   }
   select {
     margin: 4px;
     border-radius: 4px;
+    
   }
   button {
-    background-color: blanchedalmond;
-    border: solid black 2px;
+    background-color: rgba(255, 235, 205, 0);
+    color: black;
+    border: none;
     border-radius: 4px;
+    margin: 2px;
+    text-shadow: -2px 2px 3px #ff2d95;
+    /* box-shadow: 1px 1px 4px #00000083; */
   }
   button:hover {
     cursor: pointer;
+    color: rgb(109, 28, 28);
   }
 /* HEADER */
   header {
       overflow: hidden;
       position: fixed;
+      z-index: 1;
       top: 0;
       margin: 0;
       padding: 0;
       width: 100%;
-      background-color: bisque;
+      box-shadow: 5px 12px 20px #000000;
+      background-color: rgb(255, 246, 234);
+      background-image: url("images/noisy-texture.png"), linear-gradient(190deg, blanchedalmond, rgb(255, 255, 255));
   }
   .banner-a, .banner-b {
       display: flex;
@@ -46,11 +61,18 @@
     h1 {
       margin: 0;
       font-size: 32px;
+      color: rgb(70, 12, 12);
+      text-shadow: 2px 1px 5px #4d4d4d;
     }
     .plus {
       height: 45px;
       width: 45px;
+      color: rgb(70, 12, 12);
+      box-shadow: 2px 1px 5px #4d4d4d;
     }
+    .fas {
+      justify-content: center;
+   }
     p {
       font-weight: 400;
       font-size: 18px;
@@ -67,47 +89,79 @@
     }
 
 /* BODY */
+  main {
+    margin-top: 180px;
+  }
   .bookmark-list {
-    margin-top: 160px;
     padding: 0;
-    width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     }
-  .bookmark {
-    background-color: blanchedalmond;
-    border: solid black 2px;
+  .bookmark, .error {
+    width: auto;
+    background-image: url("images/noisy-texture.png"), linear-gradient(110deg, blanchedalmond, rgb(255, 255, 255));
+    border: none;
     border-radius: 4px;
-    padding: 16px;
-    width: 100%;
+    box-shadow: 5px 10px 8px #000000;
+    padding: 8px;
+    margin: 8px;
+    list-style-type: none;    
+  }
+  .error {
+    background-image: url("images/noisy-texture.png"), linear-gradient(110deg, rgb(149, 93, 93),  rgb(229, 175, 175));
+  }
+  .new-bookmark-form {
+    width: auto;
+    background-image: url("images/noisy-texture.png"), linear-gradient(110deg, blanchedalmond, rgba(255, 255, 255, 0.554));
+    border: none;
+    border-radius: 4px;
+    box-shadow: 5px 10px 8px #000000;
+    padding: 8px;
+    margin: 8px;
     list-style-type: none;    
   }
   .condensed {
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: space-between;
   }
-  .delete-bookmark-btn, .expand-bookmark-toggle {
+  .delete-bookmark-btn, .expand-bookmark-toggle, #cancel-error {
     height: 38px;
     width: 38px;
   }
-  .delete-bookmark-btn {
-    background-color: rgb(253, 182, 182);
+  .delete-bookmark-btn, #cancel-error {
+    background-color: rgb(216, 145, 145);
+    background-image: url("images/noisy-texture.png");
   }
   h2, h2 input {
     margin: 0;
     border: none;
+    background-color: none;
+    background-color: rgba(255, 235, 205, 0);
+    font-size: 22px;
+  }
+  h2 {
+    margin-left: 8px;
+    border-bottom: solid rgb(151, 135, 110) 1px;
   }
    .stars {
     list-style-type: none;
     display: flex;
     flex-direction: row;
     padding: 0;
-
   }
   .stars li button {
-    height: 38px;
-    width: 38px;
     border: none;
+    background-color: rgba(255, 235, 205, 0);
   }
-  
+  .expanded input {
+    width: 92%;
+    margin: 16px 0 0 0;
+  }
+  .expanded textarea {
+    border: none;
+    margin: 16px 0 0 0;
+    padding: 0;
+    width: 100%;
+  }
