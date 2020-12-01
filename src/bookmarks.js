@@ -17,16 +17,16 @@ const renderNewBookmark = function () {
                   <div
                     <label for="bookmark-entry">Bookmark Name:</label>
                     <input title="bookmark name (required)" type="text" 
-                    name="bookmark-entry" class="js-new-title" 
+                    name="bookmark-entry" id="bookmark-entry" class="js-new-title" 
                     placeholder="e.g., facebook" required>
                   <!-- rating -->
                   <h2>Rating:<h2>
                   <ul class="stars" aria-label="rating buttons">
-                    <li title="rating of one" value='1'><button aria-label="rating of one" type="button" class="star 1">One Star<i class="far fa-star"></i></button></li>
-                    <li title="rating of two" value='2'><button aria-label="rating of two" type="button" class="star 2">Two Stars<i class="far fa-star"></i></button></li>
-                    <li title="rating of three" value='3'><button aria-label="rating of three" type="button" class="star 3">Three Stars<i class="far fa-star"></i></button></li>
-                    <li title="rating of four" value='4'><button aria-label="rating of four" type="button" class="star 4">Four Stars<i class="far fa-star"></i></button></li>
-                    <li title="rating of five" value='5'><button aria-label="rating of five" type="button" class="star 5">Five Stars<i class="far fa-star"></i></button></li>
+                    <li title="rating of one" value='1'><button aria-label="rating of one" type="button" class="star 1">1 Stars<i class="far fa-star"></i></button></li>
+                    <li title="rating of two" value='2'><button aria-label="rating of two" type="button" class="star 2">2 Stars<i class="far fa-star"></i></button></li>
+                    <li title="rating of three" value='3'><button aria-label="rating of three" type="button" class="star 3">3 Stars<i class="far fa-star"></i></button></li>
+                    <li title="rating of four" value='4'><button aria-label="rating of four" type="button" class="star 4">4 Stars<i class="far fa-star"></i></button></li>
+                    <li title="rating of five" value='5'><button aria-label="rating of five" type="button" class="star 5">5 Stars<i class="far fa-star"></i></button></li>
                   </ul>
                 </div>
 
@@ -35,12 +35,12 @@ const renderNewBookmark = function () {
                     <!-- url link -->
                     <label for="bookmark-url">URL (must include http(s)://):</label>
                     <input title="bookmark url (required)" type="text" 
-                      name="bookmark-url" class="bookmark-url js-new-url" 
+                      name="bookmark-url" id="bookmark-url" class="bookmark-url js-new-url" 
                       placeholder="e.g., www.facebook.com" required>
                   </div>
                   <!-- description -->
                   <label for="bookmark-description">Description:</label>
-                  <textarea name="bookmark-description" title="bookmark description (not required)" class="js-new-description" rows="4" cols="50" placeholder="Add a description here. (optional)"></textarea>
+                  <textarea name="bookmark-description" id="bookmark-description" title="bookmark description (not required)" class="js-new-description" rows="4" cols="50" placeholder="Add a description here. (optional)"></textarea>
                 </div>
                 <button class="save-bookmark js-save-bookmark">Save Bookmark</button>
               </form>`)
@@ -76,7 +76,7 @@ const generateLinkElement = function (link) {
       <div class="url">
         <!-- url link -->
         <label for="bookmark-url">URL (must include "http(s)://")</label>
-        <input title="bookmark url (required)" type="text" 
+        <input title="bookmark url (required)" id="bookmark-url" type="text" 
           name="bookmark-url" class="bookmark-url js-bookmark-url" 
           placeholder="e.g., www.facebook.com" value=${link.url} required>
         <!-- visit -->
@@ -85,8 +85,8 @@ const generateLinkElement = function (link) {
         </a>
       </div>
       <!-- description -->
-      <label for="bookmark-url">Description:</label>
-      <textarea name="description" title="bookmark description (not required)" class="js-bookmark-description" rows="4" cols="50" placeholder="Add a description here. (optional)">${link.desc}</textarea>
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" title="bookmark description (not required)" class="js-bookmark-description" rows="4" cols="50" placeholder="Add a description here. (optional)">${link.desc}</textarea>
   `}
   //3) generate the condensed version
   return `
@@ -100,15 +100,15 @@ const generateLinkElement = function (link) {
       <!-- bookmark title -->
       <div class="actualTitle">
       <label for="bookmark-entry">Bookmark Title:</label>
-      <input title="bookmark name (required)" type="text" 
+      <input id="bookmark-entry" title="bookmark name (required)" type="text" 
         name="bookmark-entry" class="js-bookmark-entry" size="16"
         placeholder="e.g., facebook" value=${link.title} required>
       </div>
     </div>
         <!-- rating -->
-      <div class="titling"> 
+      <div class="buttoning"> 
         <div class="wholeStars">
-          <h3>Rating:</h3>   
+          <h2>Rating:</h2>   
           <ul class="stars">
             ${ratingString}
           </ul>
@@ -251,9 +251,9 @@ const handleStars = function () {
     let updatedStars = ''
     for (let i=0; i<5; i++) {
       if (i < store.newRating) { //filled star icon
-        updatedStars += `<li value=${i+1}><button class="star ${i+1}" type="button"><i class="fas fa-star"></i></button></li>`
+        updatedStars += `<li value=${i+1}><button class="star ${i+1}" type="button">${i+1} Stars<i class="fas fa-star"></i></button></li>`
       } else { //hollow star icon
-        updatedStars += `<li value=${i+1}><button class="star ${i+1}" type="button"><i class="far fa-star"></i></button></li>`
+        updatedStars += `<li value=${i+1}><button class="star ${i+1}" type="button">${i+1} Stars<i class="far fa-star"></i></button></li>`
       }
     }
     $(e.target).closest('.stars').html(updatedStars)
