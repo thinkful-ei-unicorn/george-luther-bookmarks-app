@@ -20,13 +20,13 @@ const renderNewBookmark = function () {
                     name="bookmark-entry" class="js-new-title" 
                     placeholder="e.g., facebook" required>
                   <!-- rating -->
-                  <h3>Rating:<h3>
+                  <h2>Rating:<h2>
                   <ul class="stars" aria-label="rating buttons">
-                    <li title="rating of one" value='1'><button aria-label="rating of one" type="button" class="star 1"><i class="far fa-star"></i></button></li>
-                    <li title="rating of two" value='2'><button aria-label="rating of two" type="button" class="star 2"><i class="far fa-star"></i></button></li>
-                    <li title="rating of three" value='3'><button aria-label="rating of three" type="button" class="star 3"><i class="far fa-star"></i></button></li>
-                    <li title="rating of four" value='4'><button aria-label="rating of four" type="button" class="star 4"><i class="far fa-star"></i></button></li>
-                    <li title="rating of five" value='5'><button aria-label="rating of five" type="button" class="star 5"><i class="far fa-star"></i></button></li>
+                    <li title="rating of one" value='1'><button aria-label="rating of one" type="button" class="star 1">One Star<i class="far fa-star"></i></button></li>
+                    <li title="rating of two" value='2'><button aria-label="rating of two" type="button" class="star 2">Two Stars<i class="far fa-star"></i></button></li>
+                    <li title="rating of three" value='3'><button aria-label="rating of three" type="button" class="star 3">Three Stars<i class="far fa-star"></i></button></li>
+                    <li title="rating of four" value='4'><button aria-label="rating of four" type="button" class="star 4">Four Stars<i class="far fa-star"></i></button></li>
+                    <li title="rating of five" value='5'><button aria-label="rating of five" type="button" class="star 5">Five Stars<i class="far fa-star"></i></button></li>
                   </ul>
                 </div>
 
@@ -50,9 +50,9 @@ const generateRatingString = function (link) {
   let ratingHTML = ''
   for (let i=0; i < 5; i++) {
     if (i < link.rating) { //filled star icon
-      ratingHTML += `<li value=${i+1}><button class="star ${i+1}" type="button"><i class="fas fa-star"></i></button></li>`
+      ratingHTML += `<li value=${i+1}><button class="star ${i+1}" type="button">${i+1} Stars<i class="fas fa-star"></i></button></li>`
     } else { //hollow star icon
-      ratingHTML += `<li value=${i+1}><button class="star ${i+1}" type="button"><i class="far fa-star"></i></button></li>`
+      ratingHTML += `<li value=${i+1}><button class="star ${i+1}" type="button">${i+1} Stars<i class="far fa-star"></i></button></li>`
     }
   }
   return ratingHTML

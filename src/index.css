@@ -178,6 +178,7 @@
     border: none;
     background-color: rgba(255, 235, 205, 0);
   }
+ 
   .expanded input {
     width: 92%;
   }

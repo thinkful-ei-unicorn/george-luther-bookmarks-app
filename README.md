@@ -2,7 +2,7 @@
 
 Wormflare is a web app for saving and organizing websites you love and loathe.
 
-## [This is the live app!](https://thinkful-ei-unicorn.github.io/george-luther-bookmarks-app/)
+## [This is the live app!](https://thinkful-ei-unicorn.github.io/george-luther-bookmarks-app/dist/)
 
 ## User Stories
 
