@@ -3,41 +3,46 @@ import $ from 'jquery'
 import store from './store'
 import api from './api'
 
-//to stay with the instant/live editing vibe... add new bookmark submission attempt on other handlers? 
-//this way new bookmarks automatically and immediately become part of the group.
 
 const renderNewBookmark = function () {
   $('.js-new-bookmark-div').html(`
               <form class="js-new-bookmark-form new-bookmark-form">
                 <div class="condensed">
                   <!-- delete -->
-                  <button class="delete-bookmark-btn js-delete-bookmark-btn" type="button">
-                    <i class="fas fa-times"></i>
-                  </button>
-                  <!-- bookmark title -->
-                  <h2><input title="bookmark name (required)" type="text" 
+                  <div class="titling">
+                    <button class="delete-bookmark-btn js-delete-bookmark-btn" type="button" role="button" aria-label="remove bookmark" value="remove bookmark">Remove Bookmark</button>
+                    <!-- bookmark title -->
+                    <h2>Add New Bookmark<h2>
+                  </div>
+                  <div
+                    <label for="bookmark-entry">Bookmark Name:</label>
+                    <input title="bookmark name (required)" type="text" 
                     name="bookmark-entry" class="js-new-title" 
-                    placeholder="e.g., facebook" required></h2>
+                    placeholder="e.g., facebook" required>
                   <!-- rating -->
-                  <ul class="stars">
-                    <li value='1'><button type="button" class="star 1"><i class="far fa-star"></i></button></li>
-                    <li value='2'><button type="button" class="star 2"><i class="far fa-star"></i></button></li>
-                    <li value='3'><button type="button" class="star 3"><i class="far fa-star"></i></button></li>
-                    <li value='4'><button type="button" class="star 4"><i class="far fa-star"></i></button></li>
-                    <li value='5'><button type="button" class="star 5"><i class="far fa-star"></i></button></li>
+                  <h3>Rating:<h3>
+                  <ul class="stars" aria-label="rating buttons">
+                    <li title="rating of one" value='1'><button aria-label="rating of one" type="button" class="star 1"><i class="far fa-star"></i></button></li>
+                    <li title="rating of two" value='2'><button aria-label="rating of two" type="button" class="star 2"><i class="far fa-star"></i></button></li>
+                    <li title="rating of three" value='3'><button aria-label="rating of three" type="button" class="star 3"><i class="far fa-star"></i></button></li>
+                    <li title="rating of four" value='4'><button aria-label="rating of four" type="button" class="star 4"><i class="far fa-star"></i></button></li>
+                    <li title="rating of five" value='5'><button aria-label="rating of five" type="button" class="star 5"><i class="far fa-star"></i></button></li>
                   </ul>
                 </div>
 
                 <div class="expanded">
                   <div class="url">
                     <!-- url link -->
+                    <label for="bookmark-url">URL (must include http(s)://):</label>
                     <input title="bookmark url (required)" type="text" 
                       name="bookmark-url" class="bookmark-url js-new-url" 
                       placeholder="e.g., www.facebook.com" required>
                   </div>
                   <!-- description -->
-                  <textarea title="bookmark description (not required)" class="js-new-description" rows="4" cols="50" placeholder="Add a description here. (optional)"></textarea>
+                  <label for="bookmark-description">Description:</label>
+                  <textarea name="bookmark-description" title="bookmark description (not required)" class="js-new-description" rows="4" cols="50" placeholder="Add a description here. (optional)"></textarea>
                 </div>
+                <button class="save-bookmark js-save-bookmark">Save Bookmark</button>
               </form>`)
 }
 
@@ -55,9 +60,9 @@ const generateRatingString = function (link) {
 const isExpanded = function (link) {
   let expandedBtnString = ''
   if (!link.expanded) {
-    expandedBtnString = '"fas fa-caret-right fa-2x"'
+    expandedBtnString = "Details"
   } else {
-    expandedBtnString = '"fas fa-caret-down fa-2x"'
+    expandedBtnString = "Condense"
   }
   return expandedBtnString
 }
@@ -70,37 +75,49 @@ const generateLinkElement = function (link) {
     expandedString = `
       <div class="url">
         <!-- url link -->
+        <label for="bookmark-url">URL (must include "http(s)://")</label>
         <input title="bookmark url (required)" type="text" 
           name="bookmark-url" class="bookmark-url js-bookmark-url" 
           placeholder="e.g., www.facebook.com" value=${link.url} required>
         <!-- visit -->
-        <a class="visit-bookmark-btn js-visit-bookmark-btn" href="${link.url}" target="_blank">
+        <a class="visit-bookmark-btn js-visit-bookmark-btn" href="${link.url}" target="_blank" title="click to visit link">
           <i class="fas fa-external-link-alt"></i>
         </a>
       </div>
       <!-- description -->
-      <textarea title="bookmark description (not required)" class="js-bookmark-description" rows="4" cols="50" placeholder="Add a description here. (optional)">${link.desc}</textarea>
+      <label for="bookmark-url">Description:</label>
+      <textarea name="description" title="bookmark description (not required)" class="js-bookmark-description" rows="4" cols="50" placeholder="Add a description here. (optional)">${link.desc}</textarea>
   `}
   //3) generate the condensed version
   return `
   <li class="bookmark js-bookmark-form" data-item-id="${link.id}">
     <div class="condensed">
       <!-- delete -->
+      <div class="titling">
       <button class="delete-bookmark-btn js-delete-bookmark-btn">
-        <i class="fas fa-times"></i>
+        Remove Bookmark</i>
       </button>
       <!-- bookmark title -->
-      <h2><input title="bookmark name (required)" type="text" 
-        name="bookmark-entry" class="js-bookmark-entry" 
-        placeholder="e.g., facebook" value=${link.title} required></h2>
-      <!-- rating -->
-      <ul class="stars">
-        ${ratingString}
-      </ul>
-      <!-- expand -->
-      <button title="show/hide details" class="expand-bookmark-toggle js-expand-bookmark-toggle" type="button">
-        <i class=${isExpanded(link)}></i>
-      </button>
+      <div class="actualTitle">
+      <label for="bookmark-entry">Bookmark Title:</label>
+      <input title="bookmark name (required)" type="text" 
+        name="bookmark-entry" class="js-bookmark-entry" size="16"
+        placeholder="e.g., facebook" value=${link.title} required>
+      </div>
+    </div>
+        <!-- rating -->
+      <div class="titling"> 
+        <div class="wholeStars">
+          <h3>Rating:</h3>   
+          <ul class="stars">
+            ${ratingString}
+          </ul>
+        </div>
+        <!-- expand -->
+        <button title="show/hide details" class="expand-bookmark-toggle js-expand-bookmark-toggle" type="button">
+          ${isExpanded(link)}
+        </button>
+      </div>  
     </div>
 
     <div class="expanded">
@@ -145,6 +162,7 @@ const handleHeaderInputs = function () {
   })
   $('header').on('input','#minStars', function(e){
     let val = Number($(e.target).val())
+    console.log(val)
     if (typeof val === "number") {
       store.minRating = val
     }
@@ -267,9 +285,6 @@ const handleNewBookmark = function () {
     store.newTitle = $('.js-new-title').val().trim()
 
     store.newUrl = $('.js-new-url').val().trim().toLowerCase()
-    if (!store.newUrl.includes('http://') || !store.newUrl.includes('https://')) {
-      store.newUrl = 'http://' + store.newUrl
-    }
 
     store.newDesc = $('.js-new-description').val().trim()
     

@@ -16,17 +16,28 @@
     <div class="banner-a">    
       <h1>WORMFLARE</h1>
       <button title="add a new bookmark" id="js-add-bookmark" type="button" class="plus icon">
-        <i class="fas fa-plus fa-2x"></i>
+        Add New Bookmark
       </button>
     </div>
     <div class="banner-b">
       <div class="left">
-        <input id="minStars" placeholder="min rating" title="set minimum rating to display" size="8">
-        <input id="maxStars" placeholder="max rating" title="set minimum rating to display" size="8">
+        <label for="minimumStars">Minimum rating to show:</label>
+        <select name="minimumStars"id="minStars" title="set minimum rating to display">
+          <option label="zero stars" value="0">0</option>
+          <option label="one star" value="1">1</option>
+          <option label="two stars" value="2">2</option>
+          <option label="three stars" value="3">3</option>
+          <option label="four stars" value="4">4</option>
+          <option label="five stars" value="5">5</option>
+        </select>
+        <label for="maximumStars">Maximum rating to show:</label>
+        <input name="maximumStars" id="maxStars" placeholder="max rating" title="set minimum rating to display" size="8">
       </div>
       <div class="right">
-        <input id="filter" placeholder="search by name" title="only show links with a name including..." size="21">
-        <select id="sortBy">
+        <label for="searchByName">Search by name:</label>
+        <input name="searchByName" id="filter" placeholder="e.g., Twitter" title="only show links with a name including..." size="21">
+        <label for="sortByVal">Sort Bookmarks:</label>
+        <select id="sortBy" name="sortByVal">
             <option value="byCreated">sort by recently created</option>
             <option value="byEdited">sort by last edited</option>
             <option value="byHighRating">sort by highest rating</option>
