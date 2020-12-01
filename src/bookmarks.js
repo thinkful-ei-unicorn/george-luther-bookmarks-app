@@ -15,9 +15,9 @@ const renderNewBookmark = function () {
                     <h2>Add New Bookmark<h2>
                   </div>
                   <div
-                    <label for="bookmark-entry">Bookmark Name:</label>
+                    <label for="bookmark-entry-new">Bookmark Name:</label>
                     <input title="bookmark name (required)" type="text" 
-                    name="bookmark-entry" id="bookmark-entry" class="js-new-title" 
+                    name="bookmark-entry" id="bookmark-entry-new" class="js-new-title" 
                     placeholder="e.g., facebook" required>
                   <!-- rating -->
                   <h2>Rating:<h2>
@@ -99,8 +99,8 @@ const generateLinkElement = function (link) {
       </button>
       <!-- bookmark title -->
       <div class="actualTitle">
-      <label for="bookmark-entry">Bookmark Title:</label>
-      <input id="bookmark-entry" title="bookmark name (required)" type="text" 
+      <label for="bookmark-entry-${link.id}">Bookmark Title:</label>
+      <input id="bookmark-entry-${link.id}" title="bookmark name (required)" type="text" 
         name="bookmark-entry" class="js-bookmark-entry" size="16"
         placeholder="e.g., facebook" value=${link.title} required>
       </div>
@@ -135,7 +135,7 @@ const generateError = function (message) {
     return `
         <section class="error">
           <button id="cancel-error">
-            <i class="fas fa-times"></i>
+            Remove Error
           </button>
           <p>${message}.</p>
         </section>`
