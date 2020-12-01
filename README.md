@@ -45,28 +45,28 @@ Wormflare is a web app for saving and organizing websites you love and loathe.
 - [x] design is responsive and mobile first.
 - [ ] a11y best practices are considered and applied.
 
-- [ ] Github Pages link in 'about' area
-- [ ] Readme file
-- [ ] All user stories are implemented
-- [ ] Separated file modules
-- [ ] Logical function grouping
-- [ ] Main tag is empty
-- [ ] Store object contains data
-- [ ] Template generation functions
-- [ ] Render function conditionally replaces content of page
-- [ ] Event handlers are single purpose
-- [ ] Re-render on store update
-- [ ] All js/jq for DOM in rendering function(s)
-- [ ] Store properties only within event handlers
-- [ ] Keyboard accessible
-- [ ] Use fetch for AJAX
-- [ ] Use jQuery for Dom access
-- [ ] Namespacing architecture for scope control
-- [ ] React-ful / RESTful
+- [x] Github Pages link in 'about' area
+- [x] Readme file
+- [x] All required user stories are implemented
+- [x] Separated file modules
+- [x] Logical function grouping
+- [x] Main tag is empty (three tags, but previously accepted by grader.)
+- [x] Store object contains data
+- [x] Template generation functions
+- [x] Render function conditionally replaces content of page
+- [x] Event handlers are single purpose
+- [x] Re-render on store update
+- [x] All js/jq for DOM in rendering function(s)
+- [x] Store properties only within event handlers
+- [x] Keyboard accessible
+- [x] Use fetch for AJAX
+- [x] Use jQuery for Dom access
+- [x] Namespacing architecture for scope control
+- [x] React-ful / RESTful
 - [ ] semantic HTML
-- [ ] responsive, mobile first
+- [x] responsive, mobile first
 - [ ] A11y practices
-- [ ] new bookmark in form
+- [x] new bookmark in form
 - [ ] inputs grouped and labeled
 - [ ] feedback for all errors
 - [ ] 
