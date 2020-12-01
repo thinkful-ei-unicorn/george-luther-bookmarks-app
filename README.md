@@ -9,13 +9,13 @@ thus adding a new blank bookmark... unless one already exists and is not filled 
 Then they'll get an error message. 
  *My goal with this version was to streamline the process by minimizing necessary user actions and page clutter
  by allowing all bookmarks including new ones to be manipulated in real-time for immediate updating and feedback.
- *This will have to change because there is currently no submit button, reducing intuitiveness and successful error feedback.
+ **This will have to change because there is currently no submit button, reducing intuitiveness and successful error feedback.
  I will probably just sort of start over from scratch and stick strictly to the requirements. 
- *Eventually I'll finish this version so that it updates on input or change and will do one of two things:
+ **Eventually I'll finish this version so that it updates on input or change and will do one of two things:
     1. Attempt to save or reject anytime you try to manipulate the DOM outside of the new bookmark.
     2. Not exist and assimilate & function just like the other bookmarks.
- *Instead of labels, I intentionally made placeholders very obvious and added titles/tooltips for further explanation.
-  * This didn't work well for a11y purposes. Perhaps I can add labels but with "display: none"?
+ **Instead of labels, I intentionally made placeholders very obvious and added titles/tooltips for further explanation.
+  ** This didn't work well for a11y purposes. Perhaps I can add labels but with "display: none"?
  
 * Bookmarks contain:
   * title
