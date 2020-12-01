@@ -69,4 +69,3 @@ Wormflare is a web app for saving and organizing websites you love and loathe.
 - [x] new bookmark in form
 - [ ] inputs grouped and labeled
 - [ ] feedback for all errors
-- [ ] 
