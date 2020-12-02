@@ -41,9 +41,9 @@ Wormflare is a web app for saving and organizing websites you love and loathe.
 - [x] functions are grouped logically.
 - [x] event handlers do not directly manipulate the DOM.
 - [x] DOM is generally re-rendered rather than directly manipulated.
-- [ ] HTML is semantic.
+- [x] HTML is semantic.
 - [x] design is responsive and mobile first.
-- [ ] a11y best practices are considered and applied.
+- [x] a11y best practices are considered and applied.
 
 - [x] Github Pages link in 'about' area
 - [x] Readme file
@@ -63,9 +63,9 @@ Wormflare is a web app for saving and organizing websites you love and loathe.
 - [x] Use jQuery for Dom access
 - [x] Namespacing architecture for scope control
 - [x] React-ful / RESTful
-- [ ] semantic HTML
+- [x] semantic HTML
 - [x] responsive, mobile first
-- [ ] A11y practices
+- [x] A11y practices
 - [x] new bookmark in form
-- [ ] inputs grouped and labeled
-- [ ] feedback for all errors
+- [x] inputs grouped and labeled
+- [x] feedback for all errors
