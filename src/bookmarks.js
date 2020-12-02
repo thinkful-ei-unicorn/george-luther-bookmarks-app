@@ -74,7 +74,7 @@ const generateLinkElement = function (link) {
   if (link.expanded) {
     expandedString = `
       <div class="url">
-        <!-- url link -->
+        <!-- url link input -->
         <label for="bookmark-url">URL (must include "http(s)://")</label>
         <input title="bookmark url (required)" id="bookmark-url" type="text" 
           name="bookmark-url" class="bookmark-url js-bookmark-url" 
