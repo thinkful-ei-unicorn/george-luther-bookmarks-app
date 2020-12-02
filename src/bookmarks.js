@@ -5,7 +5,18 @@ import api from './api'
 
 
 const renderNewBookmark = function () {
-  $('.js-new-bookmark-div').html(`
+  let myNewObj = { rating: store.newRating}
+  
+  let newRatingString = `<li title="rating of one" value='1'><button aria-label="rating of one" type="button" class="star 1">1 Stars<i class="far fa-star"></i></button></li>
+      <li title="rating of two" value='2'><button aria-label="rating of two" type="button" class="star 2">2 Stars<i class="far fa-star"></i></button></li>
+      <li title="rating of three" value='3'><button aria-label="rating of three" type="button" class="star 3">3 Stars<i class="far fa-star"></i></button></li>
+      <li title="rating of four" value='4'><button aria-label="rating of four" type="button" class="star 4">4 Stars<i class="far fa-star"></i></button></li>
+      <li title="rating of five" value='5'><button aria-label="rating of five" type="button" class="star 5">5 Stars<i class="far fa-star"></i></button></li>`
+  if (store.newRating !== null) {
+    newRatingString = generateRatingString(myNewObj)
+  }
+  console.log(myNewObj)
+  return (`
               <form class="js-new-bookmark-form new-bookmark-form">
                 <div class="condensed">
                   <!-- delete -->
@@ -22,11 +33,7 @@ const renderNewBookmark = function () {
                   <!-- rating -->
                   <h2>Rating:<h2>
                   <ul class="stars" aria-label="rating buttons">
-                    <li title="rating of one" value='1'><button aria-label="rating of one" type="button" class="star 1">1 Stars<i class="far fa-star"></i></button></li>
-                    <li title="rating of two" value='2'><button aria-label="rating of two" type="button" class="star 2">2 Stars<i class="far fa-star"></i></button></li>
-                    <li title="rating of three" value='3'><button aria-label="rating of three" type="button" class="star 3">3 Stars<i class="far fa-star"></i></button></li>
-                    <li title="rating of four" value='4'><button aria-label="rating of four" type="button" class="star 4">4 Stars<i class="far fa-star"></i></button></li>
-                    <li title="rating of five" value='5'><button aria-label="rating of five" type="button" class="star 5">5 Stars<i class="far fa-star"></i></button></li>
+                    ${newRatingString}
                   </ul>
                 </div>
 
@@ -50,9 +57,9 @@ const generateRatingString = function (link) {
   let ratingHTML = ''
   for (let i=0; i < 5; i++) {
     if (i < link.rating) { //filled star icon
-      ratingHTML += `<li value=${i+1}><button class="star ${i+1}" type="button">${i+1} Stars<i class="fas fa-star"></i></button></li>`
+      ratingHTML += `<li title="rating of ${i+1}" value=${i+1}><button class="star ${i+1}" type="button">${i+1} Stars<i class="fas fa-star"></i></button></li>`
     } else { //hollow star icon
-      ratingHTML += `<li value=${i+1}><button class="star ${i+1}" type="button">${i+1} Stars<i class="far fa-star"></i></button></li>`
+      ratingHTML += `<li title="rating of ${i+1}" value=${i+1}><button class="star ${i+1}" type="button">${i+1} Stars<i class="far fa-star"></i></button></li>`
     }
   }
   return ratingHTML
@@ -212,6 +219,12 @@ const handleHeaderSelect = function () {
 const render = function () {
     renderError()
 
+    if (!store.addingBookmark) {
+      $('.js-new-bookmark-div').empty()
+    } else {
+      $('.js-new-bookmark-div').html(renderNewBookmark())
+    }
+
     let links = [...store.links]
     //Only show bookmarks where title includes searchbar text
     if (store.searchText) {
@@ -248,15 +261,7 @@ const handleStars = function () {
     e.preventDefault
     store.newRating = $(e.target).closest('li').val()
     console.log(`rating set to ${store.newRating}`)
-    let updatedStars = ''
-    for (let i=0; i<5; i++) {
-      if (i < store.newRating) { //filled star icon
-        updatedStars += `<li value=${i+1}><button class="star ${i+1}" type="button">${i+1} Stars<i class="fas fa-star"></i></button></li>`
-      } else { //hollow star icon
-        updatedStars += `<li value=${i+1}><button class="star ${i+1}" type="button">${i+1} Stars<i class="far fa-star"></i></button></li>`
-      }
-    }
-    $(e.target).closest('.stars').html(updatedStars)
+    render()
   })
   $('.js-bookmark-list').on('click', '.star', function(e) {
     e.preventDefault()
@@ -292,7 +297,6 @@ const handleNewBookmark = function () {
       .then((newBookmark) => {
         store.addingBookmark = false
         store.addLink(newBookmark)
-        $('.js-new-bookmark-div').empty()
         render()
       })
       .catch((error) => {
@@ -313,9 +317,10 @@ const handleAddBookmarkBtn = function () {
 
         //when every action outside of the new bookmark automatically submits a bookmark add this:
         //store.addingBookmark = true
+        render()
       } else {
         store.addingBookmark = true
-        renderNewBookmark()
+        render()
       }
     })
 }
@@ -343,12 +348,12 @@ const handleDeleteBtn = function () {
         })
     })
     $('.js-new-bookmark-div').on('click', '.js-delete-bookmark-btn', function(e) {
-      $('.js-new-bookmark-div').empty()
       store.addingBookmark = false
       store.newTitle = null
       store.newUrl = null
       store.newDesc = null
       store.newRating = null
+      render()
     })
 }
 
